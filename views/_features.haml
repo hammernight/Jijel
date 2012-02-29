@@ -1,0 +1,17 @@
+#site_features
+  - @site.features.each do |feature|
+    .site_row{:id => "site_row_#{feature.filename}"}
+      %span{:title => "Feature: #{feature.name}", :class => 'important_text'}
+        = feature.name
+      %a{:href => '#', :class => 'btn_anchor btn_secondary show_scenarios_button', :title => 'See the scenarios in the feature', :feature => "#{feature.filename}"} Scenarios
+      %a{:href => '#', :class => 'btn_anchor btn_secondary code_button', :filename => "#{feature.filename}", :title => 'See the code in this feature'} View Code
+      %a{:href => '#', :class => 'btn_anchor btn_primary', :title => 'Execute all scenarios in this feature'} Run Feature
+    %div{:id => "code_#{feature.filename}", :class => 'source_code'}
+      %pre{:class => 'brush:ruby'}
+        = feature.content
+    %div{:id => "scenarios_#{feature.filename}", :class => 'feature_scenarios'}
+      - feature.scenarios.each do |scenario|
+        .feature_scenario
+          .feature_scenario_name{:title => "Scenario: #{scenario.name}"}
+            = scenario.name
+          %a{:href => '#', :class => 'btn_anchor btn_primary', :title => 'Execute this scenario'} Run Scenario

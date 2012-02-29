@@ -1,0 +1,9 @@
+#site_flows
+  - @site.flows.each do |flow|
+    .site_row{:id => "site_row_#{flow.filename}"}
+      %span{:title => "Flow: #{flow.name}"}
+        = flow.name
+      %a{:href => '#', :class => 'btn_anchor btn_secondary code_button', :filename => "#{flow.filename}", :title => 'See the code in this flow'} View Code
+    %div{:id => "code_#{flow.filename}", :class => 'source_code'}
+      %pre{:class => 'brush:ruby'}
+        = flow.content

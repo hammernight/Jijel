@@ -1,0 +1,11 @@
+- if @sites
+  .sites
+    Sites
+    - @sites.each do |site|
+      %div{:id => "site_#{site.name}", :class => 'site'}
+        - if @site and @site.name.eql? site.name
+          %a{:href => "/sites/#{site.name}", :class => 'btn_anchor btn_secondary'}
+            = site.name
+        - else
+          %a{:href => "/sites/#{site.name}", :class => 'btn_anchor btn_primary'}
+            = site.name

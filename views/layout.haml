@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %title Manheim Digital Automation Web
+    %link(rel='stylesheet' href='/styles/styles.css')
+    %link(rel='stylesheet' href='/styles/acid.css')
+    %link(rel='stylesheet' href='/styles/shCoreDefault.css')
+    %script{:type => 'text/javascript', :src  => '/scripts/jquery-1.7.1.min.js'}
+    %script{:type => 'text/javascript', :src => '/scripts/shCore.js'}
+    %script{:type => 'text/javascript', :src => '/scripts/shBrushRuby.js'}
+    %script{:type => 'text/javascript', :src  => '/scripts/ui.js'}
+  %body
+    .inner
+      .header
+        .right
+          - if session[:root_dir]
+            .path
+              %span Local Site Path:
+              = session[:root_dir]
+          .search
+            %form{:id => 'search_form', :name => 'search', :action => '/search', :method => 'POST'}
+              %input{:id => 'search_text_box', :type => 'text', :name => 'search_text', :value => 'Search Sites'}
+              %a{:href => '', :class => 'btn_anchor btn_tertiary'} Search
+    .splitter
+    .page_frame
+      .inner
+        = haml :_sites_sidebar
+        .content
+          = yield

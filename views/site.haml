@@ -1,0 +1,14 @@
+%a{:href => "/sites/#{@site.name}", :class => 'btn_anchor btn_secondary'}
+  = @site.name
+%a{:href => 'javascript:hideCode();', :id => 'hide_code_link'} Hide All Code
+%a{:href => 'javascript:hideScenarios();', :id => 'hide_scenarios_link'} Hide All Scenarios
+.site_options
+  .site_option
+    %a{:href => '#', :id => 'site_features_link', :class => 'site_option_link'} Features
+    = haml :_features
+  .site_option
+    %a{:href => '#', :id => 'site_pages_link', :class => 'site_option_link'} Pages
+    = haml :_pages
+  .site_option
+    %a{:href => '#', :id => 'site_flows_link', :class => 'site_option_link'} Flows
+    = haml :_flows

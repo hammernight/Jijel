@@ -1,0 +1,8 @@
+.root_form
+  %form(action='/root_dir' method='POST')
+    %label(for='root_dir')
+      Root Directory:
+    %input(type='text' name='root_dir' value=@root_dir)
+    %a{:href => '', :class => 'btn_anchor btn_primary'} Submit
+    - if session[:dne]
+      %img{:src => '/images/sign_warning.png'}
