@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'haml'
 
-class AutomationWeb < Sinatra::Application
+class JijelWeb < Sinatra::Application
 	enable :sessions
 	set :haml, :format => :html5
 	set :environment, :development

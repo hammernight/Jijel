@@ -1,4 +1,4 @@
-class AutomationWeb < Sinatra::Application
+class JijelWeb < Sinatra::Application
 
   get '/sites/:sitename' do |sitename|
     @sites = session[:sites]
