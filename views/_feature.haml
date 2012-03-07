@@ -1,0 +1,8 @@
+.site_row{:id => "site_row_#{feature.filename}"}
+  %span{:title => "Feature: #{feature.name}", :class => 'important_text'}
+    = feature.name
+  %a{:href => '#', :class => 'btn_anchor btn_secondary show_scenarios_button', :title => 'See the scenarios in the feature', :feature => "#{feature.filename}"} Scenarios
+  %a{:href => '#', :class => 'btn_anchor btn_secondary code_button', :filename => "#{feature.filename}", :title => 'See the code in this feature'} View Code
+  %a{:href => '#', :class => 'btn_anchor btn_primary', :title => 'Execute all scenarios in this feature'} Run Feature
+= haml :_source_code, :locals => {:element => feature}
+= haml :_scenarios, :locals => {:feature => feature}

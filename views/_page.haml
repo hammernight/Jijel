@@ -1,0 +1,11 @@
+.site_row{:id => "site_row_#{page.filename}"}
+  %span{:title => "Page: #{page.name}"}
+    = page.name
+  %a{:href => '#', :class => 'btn_anchor btn_secondary element_button', :title => 'See the elements defined in this page', :page_filename => "#{page.filename}"} Elements
+  %a{:href => '#', :class => 'btn_anchor btn_secondary code_button', :filename => "#{page.filename}", :title => 'See the code in this page'} View Code
+= haml :_source_code, :locals => {:element => page}
+#page_elements{:id => "page_elements_#{page.filename}"}
+  - page.elements.each do |element|
+    .page_element
+      %span
+        = element[:name]

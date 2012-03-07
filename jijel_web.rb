@@ -1,5 +1,7 @@
+require 'rubygems'
 require 'sinatra'
 require 'haml'
+require 'git'
 
 class JijelWeb < Sinatra::Application
 	enable :sessions
@@ -21,6 +23,7 @@ class JijelWeb < Sinatra::Application
 
 	post '/root_dir' do
 		dir = params[:root_dir]
+		#git = Git.clone dir, 'tmp'
 		if FileHelper.dir_exists? dir
 			session[:root_dir] = dir
 			session[:dne] = nil
@@ -29,6 +32,16 @@ class JijelWeb < Sinatra::Application
 			session[:dne] = true
 			redirect '/root_dir'
 		end
+	end
+
+	get '/settings' do
+		haml :settings
+	end
+
+	post '/search' do
+		search_text = params[:search_text]
+		puts search_text
+		haml :search_results
 	end
 
 end

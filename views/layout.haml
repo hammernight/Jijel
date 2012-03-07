@@ -21,6 +21,9 @@
             %form{:id => 'search_form', :name => 'search', :action => '/search', :method => 'POST'}
               %input{:id => 'search_text_box', :type => 'text', :name => 'search_text', :value => 'Search Sites'}
               %a{:href => '', :class => 'btn_anchor btn_tertiary'} Search
+          .settings_link
+            %a{:href => '/settings'}
+              %span Settings
     .splitter
     .page_frame
       .inner

@@ -16,7 +16,7 @@ body {
 
 .header {
     margin-top: 12px;
-    height: 60px;
+    height: 80px;
     background: url('/images/logo.png') no-repeat;
 }
 
@@ -181,7 +181,7 @@ a:hover {
     margin-left: 40px;
 }
 
-#site_features span, #site_pages span, #site_flows span {
+#site_features span, #site_pages span, #site_flows span, #page_elements span {
     display: inline-block;
     width: 140px;
     white-space: nowrap;
@@ -191,11 +191,15 @@ a:hover {
     overflow: hidden;
 }
 
+#page_elements span {
+    width: auto;
+}
+
 .site_row {
     margin-bottom: 10px;
 }
 
-.site_row:hover, .feature_scenario:hover {
+.site_row:hover, .feature_scenario:hover, .page_element:hover {
     color: #E38929;
 }
 
@@ -241,4 +245,19 @@ a:hover {
 
 input[type="submit"] {
     border: none;
+}
+
+#page_elements {
+    margin-left: 80px;
+    margin-bottom: 10px;
+}
+
+.page_element {
+    display: none;
+}
+
+.settings_link {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: right;
 }

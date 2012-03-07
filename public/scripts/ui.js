@@ -17,12 +17,17 @@ $(document).ready(function () {
     $('a').click(function () {
         if ($(this).text() == 'Scenarios') {
             $('#scenarios_' + $(this).attr('feature')).toggle();
-            if($('.feature_scenarios').is(':visible')) {
+            if ($('.feature_scenarios').is(':visible')) {
                 $('#hide_scenarios_link').show();
             } else {
                 hideScenarios();
             }
         }
+    });
+
+    // page element toggling
+    $('.element_button').click(function () {
+        $('#page_elements_' + $(this).attr('page_filename')).toggle();
     });
 
     // search text box

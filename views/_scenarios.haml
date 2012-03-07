@@ -1,0 +1,3 @@
+%div{:id => "scenarios_#{feature.filename}", :class => 'feature_scenarios'}
+  - feature.scenarios.each do |scenario|
+    = haml :_scenario, :locals => {:scenario => scenario}
