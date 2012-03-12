@@ -6,22 +6,6 @@ require 'helpers/file_helper'
 
 describe Page do
 
-	it 'should load pages for a site' do
-		site = Site.new 'bla.rb'
-		pages_paths = %w(page1 page2)
-		should_receive(:find_page).with(site).and_return(pages_paths)
-		page1 = Page.new
-		page2 = Page.new
-		should_receive(:build_page).with(site, 'page1').and_return(page1)
-		should_receive(:build_page).with(site, 'page2').and_return(page2)
-		pages = double('pages')
-		pages.should_receive(:<<).with(page1)
-		pages.should_receive(:<<).with(page2)
-		sorted_pages = [page2, page1]
-		should_receive(:sort_pages).with(pages).and_return(sorted_pages)
-		Page.load_pages(site).should eq sorted_pages
-	end
-
   describe 'load_pages' do
     it 'should load the pages in the pages directory for a site' do
 			#TODO break this test apart into smaller tests

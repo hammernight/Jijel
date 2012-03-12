@@ -12,11 +12,13 @@
   %body
     .inner
       .header
+        %a{:href => '/'}
+          %img{:src => '/images/logo.png'}
         .right
-          - if session[:root_dir]
+          - if session[:repo]
             .path
               %span Local Site Path:
-              = session[:root_dir]
+              = session[:repo]
           .search
             %form{:id => 'search_form', :name => 'search', :action => '/search', :method => 'POST'}
               %input{:id => 'search_text_box', :type => 'text', :name => 'search_text', :value => 'Search Sites'}

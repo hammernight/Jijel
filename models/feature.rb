@@ -13,7 +13,7 @@ class Feature
       feature.content = File.open(feature_path, "rb").read
       feature.scenarios = Scenario.load_scenarios feature
       features << feature
-    end
+		end
     features.sort {|a,b| a.name <=> b.name}
   end
 

@@ -2,3 +2,5 @@
 .rbenv-version
 .rvmrc
 .bundle/
+.tmp
+Gemfile.swp

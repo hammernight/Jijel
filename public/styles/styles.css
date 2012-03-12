@@ -17,7 +17,6 @@ body {
 .header {
     margin-top: 12px;
     height: 80px;
-    background: url('/images/logo.png') no-repeat;
 }
 
 .header .right {
@@ -260,4 +259,19 @@ input[type="submit"] {
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: right;
+}
+
+.error_notification {
+    width: 1000px;
+    background-color: #f08080;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 20px;
+    margin-bottom: 20px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+#repo_text {
+    width: 200px;
 }

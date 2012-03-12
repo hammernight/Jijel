@@ -1,8 +1,9 @@
 .root_form
-  %form(id='root_dir_form' action='/root_dir' method='POST')
-    %label(for='root_dir')
-      Root Directory:
-    %input(type='text' name='root_dir' value=@root_dir)
-    %input(type='submit' class='btn_anchor btn_primary' value='Submit')
-    - if session[:dne]
-      %img{:src => '/images/sign_warning.png'}
+  - if @dne
+    .error_notification
+      We were unable to clone this repo...Please try again
+  %form(id='repo_form' action='/repo' method='POST')
+    %label(for='repo')
+      Git Repository:
+    %input(type='text' name='repo' id='repo_text')
+    %input(type='submit' class='btn_anchor btn_primary' value='Submit' id='repo_submit')

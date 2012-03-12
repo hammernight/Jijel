@@ -9,29 +9,38 @@ class JijelWeb < Sinatra::Application
 	set :environment, :development
 
 	before do
-		redirect '/root_dir' unless (session[:root_dir] or request.url.include? 'root_dir')
+		redirect '/repo' unless has_repo?
 	end
 
 	get '/' do
 		redirect '/sites'
 	end
 
-	get '/root_dir' do
-		@root_dir = session[:root_dir]
+	get '/repo' do
 		haml :root
 	end
 
-	post '/root_dir' do
-		dir = params[:root_dir]
-		#git = Git.clone dir, 'tmp'
-		if FileHelper.dir_exists? dir
-			session[:root_dir] = dir
-			session[:dne] = nil
-			redirect '/sites'
-		else
-			session[:dne] = true
-			redirect '/root_dir'
+	post '/repo' do
+		dir = params[:repo]
+		begin
+			FileUtils.rm_rf 'tmp'
+			git = Git.clone dir, "tmp/#{dir.split('/').last}"
+			raise if git.nil?
+			session[:repo] = "tmp/#{dir.split('/').last}"
+			redirect '/'
+		rescue Exception => e
+			puts e
+			@dne = true
+			haml :root
 		end
+
+		#if FileHelper.dir_exists? dir
+		#	session[:root_dir] = dir
+		#	redirect '/sites'
+		#else
+		#	@dne = true
+		#	haml :root
+		#end
 	end
 
 	get '/settings' do
@@ -42,6 +51,10 @@ class JijelWeb < Sinatra::Application
 		search_text = params[:search_text]
 		puts search_text
 		haml :search_results
+	end
+
+	def has_repo?
+		session[:repo] or request.url.include? 'repo'
 	end
 
 end

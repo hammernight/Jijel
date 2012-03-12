@@ -50,6 +50,7 @@ GEM
       commonwatir (>= 1.9.2)
     gherkin (2.9.0)
       json (>= 1.4.6)
+    git (1.2.5)
     haml (3.1.4)
     headless (0.2.2)
     highline (1.6.11)
@@ -134,6 +135,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano
   cucumber
+  git
   haml
   headless
   jenkins-remote-api
